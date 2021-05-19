@@ -19,7 +19,6 @@ end
 
 def self.find(id, db)
   pokemon = db.execute("SELECT id, name, type FROM pokemon WHERE id = ?", id).flatten
-  Pokemon.new(id, pokemon[1], pokemon[2], pokemon[3])
 end
 
 end

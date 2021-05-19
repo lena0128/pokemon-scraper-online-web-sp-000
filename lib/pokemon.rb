@@ -19,7 +19,11 @@ def self.save(name, type, db)
 end
 
 def self.find(id, db)
-    db.execute("SELECT id, name, type FROM pokemon WHERE id = ?", id).flatten
+    sql = <<-SQL
+      SELECT * FROM pokemon WHERE id = ?
+    SQL
+    pokemon = db.execute(sql, id)[0]
+    Pokemon.new(id:pokemon[0], name:pokemon[1], type:pokemon[2], db:db)
   end
 
 end

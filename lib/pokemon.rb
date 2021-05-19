@@ -22,7 +22,7 @@ def self.find(id, db)
       SELECT * FROM pokemon WHERE id = (?);
     SQL
     pokemon = db.execute(sql, [id]).flatten
-    Pokemon.new(id, pokemon[1], pokemon[2], pokemon[3], db )
+    Pokemon.new(pokemon[0], pokemon[1], pokemon[2], db )
   end
 
 end
